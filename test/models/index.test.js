@@ -16,13 +16,48 @@ describe('base model', function() {
   });
 
   describe('constructor', function() {
-    it('populates the model with values', function(done) {
+    it('populates the model setting values', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.has('name').then(function(value) {
+        expect(value).to.be.true;
+        done();
+      });
+    });
+
+    it('populates the model assigning values', function(done) {
       let model = new Model({
         name: 'King'
       });
 
       model.get('name').then(function(value) {
         expect(value).to.equal('King');
+        done();
+      });
+    });
+  });
+
+  describe('get', function() {
+    it('returns the value if set', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.get('name').then(function(value) {
+        expect(value).to.equal('King');
+        done();
+      });
+    });
+
+    it('returns null if not set', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.get('foo').then(function(value) {
+        expect(value).to.be.null;
         done();
       });
     });
