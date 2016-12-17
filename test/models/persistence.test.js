@@ -1,11 +1,30 @@
 'use strict';
 
-const expect = require('chai').expect,
+const _ = require('lodash'),
+  expect = require('chai').expect,
   Model = require('../../lib').Model,
   Promise = require('bluebird');
 
 describe('base model', function() {
   describe('save', function() {
+    let id;
+
+    afterEach(function(done) {
+      if (_.isUndefined(id)) {
+        done();
+        return;
+      }
+
+      Model.find(id)
+        .then(function(model) {
+          return model.delete();
+        })
+        .then(function() {
+          id = undefined;
+          done();
+        });
+    });
+
     it('persists a new model', function(done) {
       const model = new Model({
         name: 'King'
@@ -16,6 +35,7 @@ describe('base model', function() {
           return model.get('id');
         })
         .then(function(value) {
+          id = value;
           return Model.find(value);
         })
         .then(function(model) {
@@ -41,17 +61,32 @@ describe('base model', function() {
 
           expect(id).to.equal(1);
           expect(name).to.equal('Adelia');
+
           done();
         });
     });
   });
 
   describe('delete', function() {
+    let id;
+
+    afterEach(function(done) {
+      Model.find(id)
+        .then(function(model) {
+          return model.delete();
+        })
+        .catch(function() {
+          // Ignored
+        })
+        .finally(function() {
+          done();
+        });
+    });
+
     it('deletes a persisted model', function(done) {
       const model = new Model({
         name: 'Pen-Pen'
       });
-      let id;
 
       model.save()
         .then(function(model) {
