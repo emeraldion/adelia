@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Dec 17, 2016 at 01:27 PM
+-- Generation Time: Dec 17, 2016 at 02:45 PM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -32,7 +32,13 @@ CREATE TABLE `birds` (
   `id` int(11) NOT NULL,
   `name` varchar(24) NOT NULL,
   `size` enum('small','medium','large','') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `birds`
+--
+
+INSERT INTO `birds` (`id`, `name`, `size`) VALUES(1, 'Budgie', 'small');
 
 -- --------------------------------------------------------
 
@@ -100,7 +106,7 @@ ALTER TABLE `models`
 -- AUTO_INCREMENT for table `birds`
 --
 ALTER TABLE `birds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `cats`
 --
