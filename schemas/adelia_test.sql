@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Dec 17, 2016 at 02:45 PM
+-- Generation Time: Dec 17, 2016 at 10:19 PM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -31,14 +31,15 @@ USE `adelia_test`;
 CREATE TABLE `birds` (
   `id` int(11) NOT NULL,
   `name` varchar(24) NOT NULL,
-  `size` enum('small','medium','large','') NOT NULL
+  `size` enum('small','medium','large','') NOT NULL,
+  `person_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `birds`
 --
 
-INSERT INTO `birds` (`id`, `name`, `size`) VALUES(1, 'Budgie', 'small');
+INSERT INTO `birds` (`id`, `name`, `size`, `person_id`) VALUES(1, 'Budgie', 'small', NULL);
 
 -- --------------------------------------------------------
 
@@ -49,14 +50,15 @@ INSERT INTO `birds` (`id`, `name`, `size`) VALUES(1, 'Budgie', 'small');
 CREATE TABLE `cats` (
   `id` int(11) NOT NULL,
   `name` varchar(24) NOT NULL,
-  `color` varchar(12) NOT NULL
+  `color` varchar(12) NOT NULL,
+  `person_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cats`
 --
 
-INSERT INTO `cats` (`id`, `name`, `color`) VALUES(1, 'Duchess', 'white');
+INSERT INTO `cats` (`id`, `name`, `color`, `person_id`) VALUES(1, 'Duchess', 'white', NULL);
 
 -- --------------------------------------------------------
 
@@ -75,6 +77,25 @@ CREATE TABLE `models` (
 
 INSERT INTO `models` (`id`, `name`) VALUES(1, 'Adelia');
 INSERT INTO `models` (`id`, `name`) VALUES(2, 'Emperor');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `people`
+--
+
+CREATE TABLE `people` (
+  `id` int(11) NOT NULL,
+  `name` varchar(12) NOT NULL,
+  `age` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `people`
+--
+
+INSERT INTO `people` (`id`, `name`, `age`) VALUES(1, 'Erika', 31);
+INSERT INTO `people` (`id`, `name`, `age`) VALUES(2, 'Louis', 28);
 
 --
 -- Indexes for dumped tables
@@ -99,6 +120,12 @@ ALTER TABLE `models`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `people`
+--
+ALTER TABLE `people`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -106,17 +133,22 @@ ALTER TABLE `models`
 -- AUTO_INCREMENT for table `birds`
 --
 ALTER TABLE `birds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `cats`
 --
 ALTER TABLE `cats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `models`
 --
 ALTER TABLE `models`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=97;
+--
+-- AUTO_INCREMENT for table `people`
+--
+ALTER TABLE `people`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
