@@ -1,7 +1,8 @@
 'use strict';
 
 const expect = require('chai').expect,
-  Model = require('../../lib').Model;
+  Model = require('../../lib').Model,
+  Promise = require('bluebird');
 
 describe('base model', function() {
   it('is defined', function() {
@@ -14,5 +15,46 @@ describe('base model', function() {
     expect(model).to.not.be.null;
   });
 
-  console.log(typeof Model);
+  describe('constructor', function() {
+    it('populates the model with values', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.get('name').then(function(value) {
+        expect(value).to.equal('King');
+        done();
+      });
+    });
+  });
+
+  describe('findById', function() {
+    it('populates the model from DB', function(done) {
+      let model = new Model();
+
+      model.findById(1)
+        .then(function() {
+          Promise.all([
+            model.get('id').then(function(value) {
+              expect(value).to.equal(1);
+            }),
+            model.get('name').then(function(value) {
+              expect(value).to.equal('Adelia');
+            })
+          ]).then(function() {
+            done();
+          });
+        });
+    });
+
+    it('handles missing data DB', function(done) {
+      let model = new Model();
+
+      model.findById(-1)
+        .catch(function(err) {
+          expect(err.code).to.equal('ENOTFOUND');
+          done();
+        });
+    });
+  });
 });
