@@ -63,6 +63,64 @@ describe('base model', function() {
     });
   });
 
+  describe('set', function() {
+    it('sets the value of a column', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.set('name', 'Emperor').then(function() {
+        model.get('name').then(function(value) {
+          expect(value).to.equal('King');
+          done();
+        });
+      });
+    });
+
+    it('sets the value of an extended property', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.set('foo', 'bar').then(function() {
+        model.get('foo').then(function(value) {
+          expect(value).to.equal('bar');
+          done();
+        });
+      });
+    });
+  });
+
+  describe('unset', function() {
+    it('unsets the value of a column', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.unset('name', 'Emperor').then(function() {
+        model.get('name').then(function(value) {
+          expect(value).to.be.null;
+          done();
+        });
+      });
+    });
+
+    it('unsets the value of an extended property', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.set('foo', 'bar').then(function() {
+        model.unset('foo').then(function() {
+          model.get('foo').then(function(value) {
+            expect(value).to.be.null;
+            done();
+          });
+        });
+      });
+    });
+  });
+
   describe('findById', function() {
     it('populates the model from DB', function(done) {
       let model = new Model();
