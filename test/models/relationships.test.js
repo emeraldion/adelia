@@ -144,6 +144,20 @@ describe('model relationships', function() {
             expect(cat).to.be.defined;
             expect(cat).to.not.be.null;
           });
+
+          return Promise.all(_.map(cats, function(cat) {
+            return cat.get('person');
+          }));
+        })
+        .then(function(people) {
+          return Promise.all(_.map(people, function(person) {
+            return person.get('name');
+          }));
+        })
+        .then(function(names) {
+          _.forEach(names, function(name) {
+            expect(name).to.equal('Sue');
+          });
           done();
         });
     });
