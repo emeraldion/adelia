@@ -57,15 +57,27 @@ describe('model relationships', function() {
       });
     });
 
-    it('returns one model associated with the given model', function() {
+    it('returns one model associated with the given model', function(done) {
       expect(person).to.be.defined;
       expect(person).to.not.be.null;
 
-      expect(cat).to.be.defined;
-      expect(cat).to.not.be.null;
-
-      expect(bird).to.be.defined;
-      expect(bird).to.not.be.null;
+      Promise.all([
+        person.hasOne('cat'),
+        person.hasOne('bird')
+      ])
+      .then(function(pets) {
+        expect(pets.length).to.equal(2);
+        _.forEach(pets, function(pet, i) {
+          if (i === 0) {
+            cat = pet;
+          } else {
+            bird = pet;
+          }
+          expect(pet).to.be.defined;
+          expect(pet).to.not.be.null;
+        });
+        done();
+      });
     });
   });
 
@@ -121,7 +133,7 @@ describe('model relationships', function() {
       });
     });
 
-    it('returns one model associated with the given model', function(done) {
+    it('returns two models associated with the given model', function(done) {
       expect(person).to.be.defined;
       expect(person).to.not.be.null;
 
