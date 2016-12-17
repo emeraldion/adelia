@@ -51,5 +51,5 @@ describe('model subclasses', function() {
           });
       });
     });
-  })
+  });
 });

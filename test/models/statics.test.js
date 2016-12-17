@@ -1,8 +1,7 @@
 'use strict';
 
 const expect = require('chai').expect,
-  Model = require('../../lib').Model,
-  Promise = require('bluebird');
+  Model = require('../../lib').Model;
 
 describe('static method', function() {
   describe('Model.find', function() {
@@ -18,7 +17,7 @@ describe('static method', function() {
     });
 
     it('finds an existing subclass', function(done) {
-      let Cat = Model.create('cat');
+      Model.create('cat');
 
       Model.find(1, 'cat').then(function(cat) {
         expect(cat).to.not.be.null;
