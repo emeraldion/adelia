@@ -6,15 +6,15 @@ const expect = require('chai').expect,
 
 describe('model subclasses', function() {
   describe('Model.create', function() {
-  	it('creates a subclass', function() {
-  	  let Cat = Model.create('cat');
-  	  expect(Cat).to.be.defined;
-  	  expect(Cat).to.not.be.null;
-  	});
-  })
+    it('creates a subclass', function() {
+      let Cat = Model.create('cat');
+      expect(Cat).to.be.defined;
+      expect(Cat).to.not.be.null;
+    });
+  });
 
   describe('a subclass', function() {
-  	let Cat = Model.create('cat');
+    let Cat = Model.create('cat');
 
     it('can be instantiated', function() {
       expect(function() { new Cat(); }).not.to.throw;
