@@ -15,4 +15,4 @@ env:
 before_script:
   - mysql < schemas/adelia_test.sql
 
-script: npm run test
+script: npm run test-ci

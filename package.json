@@ -4,7 +4,8 @@
   "description": "Antarctic-friendly ORM for Node",
   "main": "index.js",
   "scripts": {
-    "test": "MYSQL_HOST=localhost MYSQL_PORT=8889 MYSQL_USER=root MYSQL_PASSWORD=root MYSQL_DB=adelia_test mocha --recursive 'test/**/*.test.js'"
+    "test": "MYSQL_HOST=localhost MYSQL_PORT=8889 MYSQL_USER=root MYSQL_PASSWORD=root MYSQL_DB=adelia_test mocha --recursive 'test/**/*.test.js'",
+    "test-ci": "mocha --recursive 'test/**/*.test.js'"
   },
   "author": "Claudio Procida <claudio.procida@gmail.com>",
   "license": "MIT",
