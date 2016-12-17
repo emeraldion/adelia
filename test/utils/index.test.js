@@ -5,7 +5,7 @@ const expect = require('chai').expect,
 
 describe('utils', function() {
   describe('pluralize', function() {
-  	let pluralize = utils.pluralize;
+    let pluralize = utils.pluralize;
 
     it('is defined', function() {
       expect(utils.pluralize).to.be.defined;
@@ -44,7 +44,7 @@ describe('utils', function() {
   });
 
   describe('singularize', function() {
-  	let singularize = utils.singularize;
+    let singularize = utils.singularize;
 
     it('is defined', function() {
       expect(utils.singularize).to.be.defined;
@@ -83,7 +83,7 @@ describe('utils', function() {
   });
 
   describe('table_name_to_class_name', function() {
-  	let table_name_to_class_name = utils.table_name_to_class_name;
+    let table_name_to_class_name = utils.table_name_to_class_name;
 
     it('is defined', function() {
       expect(utils.table_name_to_class_name).to.be.defined;
@@ -102,7 +102,7 @@ describe('utils', function() {
   });
 
   describe('camel_case_to_joined_lower', function() {
-  	let camel_case_to_joined_lower = utils.camel_case_to_joined_lower;
+    let camel_case_to_joined_lower = utils.camel_case_to_joined_lower;
 
     it('is defined', function() {
       expect(utils.camel_case_to_joined_lower).to.be.defined;

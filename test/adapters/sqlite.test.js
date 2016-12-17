@@ -21,7 +21,7 @@ describe('SQLite adapter', function() {
 
       adapter.connect(path.join(__dirname, '../../schemas/adelia_test.sqlite'))
         .then(function() {
-            return adapter.getColumns('models');
+          return adapter.getColumns('models');
         })
         .then(function(columns) {
           expect(columns).to.eql(['id', 'name']);

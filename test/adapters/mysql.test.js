@@ -19,9 +19,9 @@ describe('MySQL adapter', function() {
       const adapter = new MySQLAdapter();
 
       adapter.connect()
-        /*.then(function() {
-          return */adapter.getColumns('models')/*;
-        })*/
+        .then(function() {
+          return adapter.getColumns('models');
+        })
         .then(function(columns) {
           expect(columns).to.eql(['id', 'name']);
           done();
