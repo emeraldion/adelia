@@ -10,7 +10,22 @@ describe('MySQL adapter', function() {
 
   it('can be instantiated', function() {
     expect(function() { new MySQLAdapter(); }).not.to.throw;
-    let adapter = new MySQLAdapter();
+    const adapter = new MySQLAdapter();
     expect(adapter).to.not.be.null;
+  });
+
+  describe('getColumns', function() {
+    it('returns a list of columns', function(done) {
+      const adapter = new MySQLAdapter();
+
+      adapter.connect()
+        /*.then(function() {
+          return */adapter.getColumns('models')/*;
+        })*/
+        .then(function(columns) {
+          expect(columns).to.eql(['id', 'name']);
+          done();
+        });
+    });
   });
 });
