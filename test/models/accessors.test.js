@@ -91,6 +91,58 @@ describe('base model', function() {
     });
   });
 
+  describe('has', function() {
+    it('returns true when a property is set during instantiation', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.has('name').then(function(value) {
+        expect(value).to.be.true;
+        done();
+      });
+    });
+
+    it('returns true when a property is set through set', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.set('foo', 'bar').then(function() {
+        model.has('foo').then(function(value) {
+          expect(value).to.be.true;
+          done();
+        });
+      });
+    });
+
+    it('returns false when a property was never set', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.has('foo').then(function(value) {
+        expect(value).to.be.false;
+        done();
+      });
+    });
+
+    it('returns false when a property was unset', function(done) {
+      let model = new Model({
+        name: 'King'
+      });
+
+      model.set('foo', 'bar').then(function() {
+        model.unset('foo').then(function() {
+          model.has('foo').then(function(value) {
+            expect(value).to.be.false;
+            done();
+          });
+        });
+      });
+    });
+  });
+
   describe('unset', function() {
     it('unsets the value of a column', function(done) {
       let model = new Model({
