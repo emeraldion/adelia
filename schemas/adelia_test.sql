@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Dec 17, 2016 at 01:13 AM
+-- Generation Time: Dec 17, 2016 at 01:27 PM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -21,6 +21,36 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `adelia_test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `adelia_test`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `birds`
+--
+
+CREATE TABLE `birds` (
+  `id` int(11) NOT NULL,
+  `name` varchar(24) NOT NULL,
+  `size` enum('small','medium','large','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cats`
+--
+
+CREATE TABLE `cats` (
+  `id` int(11) NOT NULL,
+  `name` varchar(24) NOT NULL,
+  `color` varchar(12) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cats`
+--
+
+INSERT INTO `cats` (`id`, `name`, `color`) VALUES(1, 'Duchess', 'white');
 
 -- --------------------------------------------------------
 
@@ -45,6 +75,18 @@ INSERT INTO `models` (`id`, `name`) VALUES(2, 'Emperor');
 --
 
 --
+-- Indexes for table `birds`
+--
+ALTER TABLE `birds`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cats`
+--
+ALTER TABLE `cats`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `models`
 --
 ALTER TABLE `models`
@@ -54,6 +96,16 @@ ALTER TABLE `models`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `birds`
+--
+ALTER TABLE `birds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `cats`
+--
+ALTER TABLE `cats`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `models`
 --
