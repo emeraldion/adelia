@@ -26,8 +26,8 @@ describe('static method', function() {
     });
 
     it('finds a synthesized subclass', function(done) {
-      Model.find(1, 'bird').then(function(cat) {
-        expect(cat).to.not.be.null;
+      Model.find(1, 'bird').then(function(bird) {
+        expect(bird).to.not.be.null;
         done();
       });
     });

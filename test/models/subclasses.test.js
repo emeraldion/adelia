@@ -52,4 +52,19 @@ describe('model subclasses', function() {
       });
     });
   });
+
+  describe('sublass find', function() {
+    let Cat = Model.create('cat');
+
+    it('is defined', function() {
+      expect(Cat.find).to.be.defined;
+    });
+
+    it('finds a model', function(done) {
+      Cat.find(1).then(function(cat) {
+        expect(cat).to.not.be.null;
+        done();
+      });
+    });
+  });
 });
