@@ -28,5 +28,18 @@ describe('SQLite adapter', function() {
           done();
         });
     });
+
+    it('returns a list of columns with table constraints', function(done) {
+      const adapter = new SQLiteAdapter();
+
+      adapter.connect(path.join(__dirname, '../../db/sqlite/adelia_test.sqlite'))
+        .then(function() {
+          return adapter.getColumns('books_people');
+        })
+        .then(function(columns) {
+          expect(columns).to.eql(['person_id', 'book_id']);
+          done();
+        });
+    });
   });
 });

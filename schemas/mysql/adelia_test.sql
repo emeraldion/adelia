@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `adelia_test`
 --
-DROP DATABASE `adelia_test`;
+DROP DATABASE IF EXISTS `adelia_test`;
 CREATE DATABASE IF NOT EXISTS `adelia_test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `adelia_test`;
 
