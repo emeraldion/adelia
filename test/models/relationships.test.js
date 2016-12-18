@@ -162,4 +162,64 @@ describe('model relationships', function() {
         });
     });
   });
+
+  describe('belongsTo', function() {
+    let cat, person;
+
+    beforeEach(function(done) {
+      new (Model.create('person'))({
+        name: 'Jim'
+      }).save()
+        .then(function(p) {
+          person = p;
+          return p.get('id');
+        })
+        .then(function(person_id) {
+          return Promise.resolve(new (Model.create('cat'))({
+              name: 'Socks',
+              color: 'black',
+              person_id: person_id
+            }))
+            .then(function(cat) {
+              return cat.save();
+            });
+        })
+        .then(function(c) {
+          cat = c;
+          done();
+        });
+    });
+
+    afterEach(function(done) {
+      Promise.all([
+        person.delete(),
+        cat.delete()
+      ])
+      .then(function() {
+        person = undefined;
+        cat = undefined;
+        done();
+      });
+    });
+
+    it('returns a model who owns the given model', function(done) {
+      expect(cat).to.be.defined;
+      expect(cat).to.not.be.null;
+
+      cat.belongsTo('person')
+        .then(function(person) {
+          expect(person).to.be.defined;
+          expect(person).to.not.be.null;
+
+          return person.get('cat');
+        })
+        .then(function(cat) {
+          return cat.get('name');
+        })
+        .then(function(name) {
+          expect(name).to.equal('Socks');
+          done();
+        });
+    });
+  });
 });
