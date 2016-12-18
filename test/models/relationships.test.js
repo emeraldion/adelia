@@ -222,4 +222,53 @@ describe('model relationships', function() {
         });
     });
   });
+
+  describe('hasAndBelongsToMany', function() {
+    it('returns books written by people', function(done) {
+    	this.timeout(15000);
+      const Person = Model.create('person');
+      Promise.all([
+      	Person.find(1),
+      	Person.find(2)
+      ])
+      .then(function(people) {
+      	return Promise.all(_.map(people, function(person, i) {
+      	  return person.hasAndBelongsToMany('books');
+      	}));
+      })
+      .then(function(books) {
+      	const first = _.first(books),
+      	  last = _.last(books);
+
+      	expect(_.isArray(books)).to.be.true;
+      	expect(books.length).to.equal(2);
+
+      	expect(first).to.not.be.null;
+      	expect(_.isArray(first)).to.be.true;
+      	expect(first.length).to.equal(2);
+
+      	expect(last).to.not.be.null;
+      	expect(_.isArray(last)).to.be.true;
+      	expect(last.length).to.equal(1);
+
+      	return Promise.all(
+      	  _.map(first, function(book) {
+      	  	return book.get('title');
+      	  }).concat(_.map(last, function(book) {
+      	  	return book.get('title');
+      	  }))
+      	);
+      })
+      .then(function(titles) {
+      	expect(_.isArray(titles)).to.be.true;
+      	expect(titles.length).to.equal(3);
+
+      	expect(titles[0]).to.equal('Arctic Ice Meltdown');
+      	expect(titles[1]).to.equal('Saving The Planet');
+      	expect(titles[2]).to.equal('Saving The Planet');
+
+      	done();
+      });
+    });
+  });
 });
