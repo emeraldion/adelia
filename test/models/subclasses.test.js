@@ -53,7 +53,7 @@ describe('model subclasses', function() {
     });
   });
 
-  describe('sublass find', function() {
+  describe('subclass find', function() {
     let Cat = Model.create('cat');
 
     it('is defined', function() {
