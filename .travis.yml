@@ -13,6 +13,6 @@ env:
   - MYSQL_HOST=127.0.0.1 MYSQL_PORT= MYSQL_USER=root MYSQL_PASSWORD= MYSQL_DB=adelia_test
 
 before_script:
-  - mysql < schemas/adelia_test.sql
+  - mysql < schemas/mysql/adelia_test.sql
 
 script: npm run test-ci

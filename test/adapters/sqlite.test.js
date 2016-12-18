@@ -19,7 +19,7 @@ describe('SQLite adapter', function() {
     it('returns a list of columns', function(done) {
       const adapter = new SQLiteAdapter();
 
-      adapter.connect(path.join(__dirname, '../../schemas/adelia_test.sqlite'))
+      adapter.connect(path.join(__dirname, '../../db/sqlite/adelia_test.sqlite'))
         .then(function() {
           return adapter.getColumns('models');
         })
