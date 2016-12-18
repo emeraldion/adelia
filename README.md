@@ -2,7 +2,11 @@
 
 # adelia
 
-Antarctic-friendly ORM for Node
+:penguin: Antarctic-friendly ORM for Node
+
+[![Adélie penguins on an iceberg](https://c3.staticflickr.com/4/3426/3212303306_aed5d043e5_z.jpg)](https://www.flickr.com/photos/10004136@N05/3212303306)
+
+_<small>Photo (c) by Jason Auch</small>_
 
 ## Design Principles
 
