@@ -11,7 +11,7 @@ services:
 
 env:
   - MYSQL_HOST=127.0.0.1 MYSQL_PORT= MYSQL_USER=root MYSQL_PASSWORD= MYSQL_DB=adelia_test
-  - DB=sqlite SQLITE_DB=./db/sqlite/adelia_test.sqlite MYSQL_HOST=127.0.0.1 MYSQL_PORT= MYSQL_USER=root MYSQL_PASSWORD= MYSQL_DB=adelia_test
+#  - DB=sqlite SQLITE_DB=./db/sqlite/adelia_test.sqlite MYSQL_HOST=127.0.0.1 MYSQL_PORT= MYSQL_USER=root MYSQL_PASSWORD= MYSQL_DB=adelia_test
 
 before_script:
   - mysql < schemas/mysql/adelia_test.sql
