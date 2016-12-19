@@ -7,6 +7,7 @@
     "lint": "eslint lib test",
     "mysql": "mysql -u root -p < schemas/mysql/adelia_test.sql",
     "test": "MYSQL_HOST=localhost MYSQL_PORT=8889 MYSQL_USER=root MYSQL_PASSWORD=root MYSQL_DB=adelia_test mocha --recursive 'test/**/*.test.js'",
+    "test-sqlite": "DB=sqlite SQLITE_DB=./db/sqlite/adelia_test.sqlite MYSQL_HOST=localhost MYSQL_PORT=8889 MYSQL_USER=root MYSQL_PASSWORD=root MYSQL_DB=adelia_test mocha --recursive 'test/**/*.test.js'",
     "test-ci": "mocha --recursive 'test/**/*.test.js'"
   },
   "author": "Claudio Procida <claudio.procida@gmail.com>",

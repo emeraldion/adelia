@@ -75,10 +75,9 @@ describe('base model', function() {
         .then(function(model) {
           return model.delete();
         })
-        .catch(function() {
-          // Ignored
-        })
-        .finally(function() {
+        .then(function() {
+          done();
+        }, function() {
           done();
         });
     });

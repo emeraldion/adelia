@@ -35,7 +35,7 @@ USE `adelia_test`;
 CREATE TABLE `birds` (
   `id` int(11) NOT NULL,
   `name` varchar(24) NOT NULL,
-  `size` enum('small','medium','large','') NOT NULL,
+  `size` enum('small','medium','large') NOT NULL,
   `person_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
