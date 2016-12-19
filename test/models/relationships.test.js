@@ -117,6 +117,9 @@ describe('model relationships', function() {
           cat1 = arr[0];
           cat2 = arr[1];
           done();
+        })
+        .catch(function(e) {
+          console.error(e);
         });
     });
 
@@ -131,6 +134,9 @@ describe('model relationships', function() {
         cat1 = undefined;
         cat2 = undefined;
         done();
+      })
+      .catch(function(e) {
+        console.error(e);
       });
     });
 
@@ -188,6 +194,9 @@ describe('model relationships', function() {
         .then(function(c) {
           cat = c;
           done();
+        }),
+        .catch(function(e) {
+          console.error(e);
         });
     });
 
@@ -200,6 +209,9 @@ describe('model relationships', function() {
         person = undefined;
         cat = undefined;
         done();
+      })
+      .catch(function(e) {
+        console.error(e);
       });
     });
 
