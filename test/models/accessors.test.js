@@ -172,37 +172,4 @@ describe('base model', function() {
       });
     });
   });
-
-  describe('findById', function() {
-    it('populates the model from DB', function(done) {
-      const model = new Model();
-
-      model.findById(1)
-        .then(function() {
-          return Promise.all([
-            model.get('id'),
-            model.get('name')
-          ]);
-        })
-        .then(function(values) {
-          const id = values[0];
-          const name = values[1];
-
-          expect(id).to.equal(1);
-          expect(name).to.equal('Adelia');
-
-          done();
-        });
-    });
-
-    it('handles missing data DB', function(done) {
-      const model = new Model();
-
-      model.findById(-1)
-        .catch(function(err) {
-          expect(err.code).to.equal('ENOTFOUND');
-          done();
-        });
-    });
-  });
 });
