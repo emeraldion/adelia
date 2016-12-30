@@ -1,6 +1,6 @@
 {
   "name": "adelia",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Antarctic-friendly ORM for Node",
   "main": "./lib/index.js",
   "scripts": {
