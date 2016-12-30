@@ -2,7 +2,7 @@
   "name": "adelia",
   "version": "1.0.0",
   "description": "Antarctic-friendly ORM for Node",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint lib test",
     "mysql": "mysql -u root -p < schemas/mysql/adelia_test.sql",
