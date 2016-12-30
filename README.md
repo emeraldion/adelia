@@ -20,6 +20,57 @@ Adelia is meant to be a fast, simple, promise-based ORM for Node, loosely inspir
 * Relationships: `hasOne`, `hasMany`, `belongsTo`, `hasAndBelongsToMany`.
 * Specialization: `create`.
 
+## Configuration
+
+Set these environment variables in your script:
+
+* `DB` one of the supported databases: `mysql` (default), or `sqlite` (experimental).
+
+### MySQL
+
+Set these variables to configure Adelia to use a MySQL database server: 
+
+* `MYSQL_HOST` host of the MySQL database server.
+* `MYSQL_PORT` port of the MySQL database server.
+* `MYSQL_USER` username to connect to the MySQL database server.
+* `MYSQL_PASSWORD` password of the user of the MySQL database server.
+* `MYSQL_DB` name of the MySQL database.
+
+### SQLite
+
+Set this variable to configure Adelia to use a SQLite database:
+
+* `SQLITE_DB` path to the SQLite database file.
+
+## Usage
+
+Adelia has a concise, promise-based API that allows you to perform chained operations to query and fetch model objects, access their properties, persist, and delete them. Here's an example:
+
+```js
+const Model = require('adelia').Model;
+
+// Creates a specialized model class
+const Penguin = Model.create('penguin');
+
+// Instantiates a penguin
+const emperor = new Penguin({
+  species: 'Emperor'
+});
+
+let emperor_id;
+
+// Saves the penguin to DB
+emperor.save()
+	.then(model => model.get('id'))
+	.then(id => { emperor_id = id; });
+
+// Fetches a model from the DB
+Penguin.find(emperor_id)
+	.then(model => model.get('species'))
+	.then(name => console.log(`My species is ${name}`));
+// => My species is Emperor
+```
+
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
