@@ -131,6 +131,16 @@ describe('model subclass query', function() {
         done();
       });
     });
+
+    it('handles no results', function(done) {
+      const person = new Person();
+
+      person.findByQuery('SELECT * FROM `people` WHERE `name`= \'Chewbacca\'')
+      .then(function(people) {
+        expect(people).to.be.null;
+        done();
+      });
+    });
   });
 
   describe('findAll', function() {
@@ -185,6 +195,68 @@ describe('model subclass query', function() {
       })
       .then(function(value) {
         expect(value).to.equal(id_carrie);
+        done();
+      });
+    });
+
+    it('handles no results', function(done) {
+      const person = new Person();
+
+      person.findAll({
+        whereClause: '`name`= \'Chewbacca\''
+      })
+      .then(function(people) {
+        expect(people).to.be.null;
+        done();
+      });
+    });
+  });
+
+  describe('countAll', function() {
+    it('counts people by name', function(done) {
+      const person = new Person();
+
+      person.countAll({
+        whereClause: '`name` = \'Ada\''
+      })
+      .then(function(count) {
+        expect(count).to.equal(1);
+        done();
+      });
+    });
+
+    it('counts people by age', function(done) {
+      const person = new Person();
+
+      person.countAll({
+        whereClause: '`age` = 60'
+      })
+      .then(function(count) {
+        expect(count).to.equal(2);
+        done();
+      });
+    });
+
+    it('counts people by name and age', function(done) {
+      const person = new Person();
+
+      person.countAll({
+        whereClause: '`name`= \'Carrie\' AND `age` = 60'
+      })
+      .then(function(count) {
+        expect(count).to.equal(1);
+        done();
+      });
+    });
+
+    it('handles no results', function(done) {
+      const person = new Person();
+
+      person.countAll({
+        whereClause: '`name`= \'Chewbacca\''
+      })
+      .then(function(count) {
+        expect(count).to.equal(0);
         done();
       });
     });
