@@ -25,6 +25,19 @@ describe('base model', function() {
         });
     });
 
+    afterEach(function(done) {
+      Model.find(99)
+        .then(function(model) {
+          return model.delete();
+        })
+        .then(function() {
+          done();
+        })
+        .catch(function() {
+          done();
+        });
+    });
+
     it('persists a new model', function(done) {
       const model = new Model({
         name: 'King'
@@ -61,6 +74,59 @@ describe('base model', function() {
 
           expect(id).to.equal(1);
           expect(name).to.equal('Adelia');
+
+          done();
+        });
+    });
+
+    it('opts.force inserts a model when primary key is set', function(done) {
+      new Model({
+          id: 99,
+          name: 'Puffin'
+        }).save({
+          force: true
+        })
+        .then(function(model) {
+          return Promise.all([
+            model.get('id'),
+            model.get('name')
+          ]);
+        })
+        .then(function(arr) {
+          const id = arr[0];
+          const name = arr[1];
+
+          expect(id).to.equal(99);
+          expect(name).to.equal('Puffin');
+
+          done();
+        });
+    });
+
+    it('opts.ignore inserts ignore a model', function(done) {
+      new Model({
+          id: 99,
+          name: 'Puffin'
+        }).save({
+          force: true
+        }).then(function(model) {
+          return model.save({
+            force: true,
+            ignore: true
+          });
+        })
+        .then(function(model) {
+          return Promise.all([
+            model.get('id'),
+            model.get('name')
+          ]);
+        })
+        .then(function(arr) {
+          const id = arr[0];
+          const name = arr[1];
+
+          expect(id).to.equal(99);
+          expect(name).to.equal('Puffin');
 
           done();
         });
