@@ -36,6 +36,8 @@ Set these variables to configure Adelia to use a MySQL database server:
 * `MYSQL_PASSWORD` password of the user of the MySQL database server.
 * `MYSQL_DB` name of the MySQL database.
 
+For local development it's best to use a [local MySQL server](https://dev.mysql.com/doc/mysql-getting-started/). I use [MAMP](https://www.mamp.info/) on Mac OS X, but you can also run MySQL server in [a Docker container](https://hub.docker.com/r/mysql/mysql-server/).
+
 ### SQLite
 
 Set this variable to configure Adelia to use a SQLite database:
@@ -70,6 +72,22 @@ Penguin.find(emperor_id)
 	.then(name => console.log(`My species is ${name}`));
 // => My species is Emperor
 ```
+
+## Status
+
+* MySQL support: **STABLE**
+* SQLite support: **EXPERIMENTAL**
+
+MySQL support is currently stable, with some known issues. The `MySQLAdapter.getColumns` API 
+SQLite support is currently experimental. Tests are failing locally and in TravisCI. If you'd like to use Adelia on SQLite and can contribute fixes and enhancements, please submit a PR! :love:
+
+## Contributing
+
+Thank you for your interest in Adelia! Feel free to open issues or submit a PR. See the [Contributing Guidelines](https://github.com/emeraldion/adelia/blob/master/CONTRIBUTING.md) for detailed instructions.
+
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/emeraldion/adelia/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## License
 
