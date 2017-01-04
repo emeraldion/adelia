@@ -36,7 +36,7 @@ Set these variables to configure Adelia to use a MySQL database server:
 * `MYSQL_PASSWORD` password of the user of the MySQL database server.
 * `MYSQL_DB` name of the MySQL database.
 
-For local development it's best to use a [local MySQL server](https://dev.mysql.com/doc/mysql-getting-started/). I use [MAMP](https://www.mamp.info/) on Mac OS X, but you can also run MySQL server in [a Docker container](https://hub.docker.com/r/mysql/mysql-server/).
+This assumes you already have a MySQL server to use. For local development, see the [Development](https://github.com/emeraldion/adelia/blob/master/README.md#development) section below.
 
 ### SQLite
 
@@ -79,11 +79,45 @@ Penguin.find(emperor_id)
 * SQLite support: **EXPERIMENTAL**
 
 MySQL support is currently stable, with some known issues.
-SQLite support is currently experimental. Tests are failing locally and in TravisCI. If you'd like to use Adelia on SQLite and can contribute fixes and enhancements, please submit a PR! :love:
+SQLite support is currently experimental. Tests are failing locally and in TravisCI. If you'd like to use Adelia on SQLite and can contribute fixes and enhancements, please submit a PR!
 
 ## Contributing
 
 Thank you for your interest in Adelia! Feel free to open issues or submit a PR. See the [Contributing Guidelines](https://github.com/emeraldion/adelia/blob/master/CONTRIBUTING.md) for detailed instructions.
+
+## Development
+
+Adelia is a Node module. If you are unsure what to do, follow these steps:
+
+### Installing a local MySQL server
+
+For development, it's best to use a [local MySQL server](https://dev.mysql.com/doc/mysql-getting-started/). I use [MAMP](https://www.mamp.info/) on Mac OS X, but you can also run MySQL server in [a Docker container](https://hub.docker.com/r/mysql/mysql-server/).
+
+### Install dependencies
+
+```sh
+npm install
+```
+
+### Run tests
+
+The default test target should be sufficient for most contributors:
+
+```sh
+npm test
+```
+
+If you want to run tests for MySQL alone, run:
+
+```sh
+npm run test-mysql
+```
+
+There are also SQLite specific tests:
+
+```sh
+npm run test-sqlite
+```
 
 ## Code of Conduct
 
