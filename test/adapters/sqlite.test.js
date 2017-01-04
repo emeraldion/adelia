@@ -42,4 +42,24 @@ describe('SQLite adapter', function() {
         });
     });
   });
+
+  describe('escape', function() {
+    it('escapes the argument', function() {
+      const adapter = new SQLiteAdapter();
+
+      expect(adapter.escape('foo')).to.equal('foo');
+      expect(adapter.escape('foo\'bar')).to.equal('foo\\\'bar');
+      expect(adapter.escape('foo.bar')).to.equal('foo.bar');
+    });
+  });
+
+  describe('escapeId', function() {
+    it('escapes the argument', function() {
+      const adapter = new SQLiteAdapter();
+
+      expect(adapter.escapeId('foo')).to.equal('foo');
+      expect(adapter.escapeId('foo\'bar')).to.equal('foo\'bar');
+      expect(adapter.escapeId('foo.bar')).to.equal('foo`.`bar');
+    });
+  });
 });
