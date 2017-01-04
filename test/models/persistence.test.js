@@ -129,6 +129,10 @@ describe('base model', function() {
           expect(name).to.equal('Puffin');
 
           done();
+        })
+        .catch(function(err) {
+          console.error(err);
+          done();
         });
     });
   });
