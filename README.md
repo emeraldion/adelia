@@ -78,7 +78,7 @@ Penguin.find(emperor_id)
 * MySQL support: **STABLE**
 * SQLite support: **EXPERIMENTAL**
 
-MySQL support is currently stable, with some known issues. The `MySQLAdapter.getColumns` API 
+MySQL support is currently stable, with some known issues.
 SQLite support is currently experimental. Tests are failing locally and in TravisCI. If you'd like to use Adelia on SQLite and can contribute fixes and enhancements, please submit a PR! :love:
 
 ## Contributing
