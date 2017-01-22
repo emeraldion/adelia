@@ -25,6 +25,8 @@ describe('utils', function() {
       expect(pluralize('child')).to.equal('children');
       expect(pluralize('man')).to.equal('men');
       expect(pluralize('woman')).to.equal('women');
+      expect(pluralize('zoo')).to.equal('zoos');
+      expect(pluralize('video')).to.equal('videos');
     });
 
     it('pluralizes compound listed irregular words', function() {
@@ -64,6 +66,8 @@ describe('utils', function() {
       expect(singularize('children')).to.equal('child');
       expect(singularize('men')).to.equal('man');
       expect(singularize('women')).to.equal('woman');
+      expect(singularize('zoos')).to.equal('zoo');
+      expect(singularize('videos')).to.equal('video');
     });
 
     it('singularizes compound listed irregular words', function() {
