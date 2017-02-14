@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/emeraldion/adelia.svg?branch=master)](https://travis-ci.org/emeraldion/adelia)
+[![Coverage Status](https://coveralls.io/repos/github/emeraldion/adelia/badge.svg?branch=master)](https://coveralls.io/github/emeraldion/adelia?branch=master)
 
 # adelia
 
