@@ -84,6 +84,12 @@ describe('utils', function() {
       expect(singularize('lullabies')).to.equal('lullaby');
       expect(singularize('wallabies')).to.equal('wallaby');
     });
+
+    it('returns the word unchanged if it is not listed and does not end with s', function() {
+      expect(singularize('flock')).to.equal('flock');
+      expect(singularize('sheep')).to.equal('sheep');
+      expect(singularize('deer')).to.equal('deer');
+    });
   });
 
   describe('table_name_to_class_name', function() {
