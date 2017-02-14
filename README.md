@@ -128,4 +128,4 @@ Please note that this project is released with a [Contributor Code of Conduct](h
 
 [MIT](https://opensource.org/licenses/MIT)
 
-Copyright (c) 2016, Claudio Procida
+Copyright (c) 2016, 2017 Claudio Procida
